@@ -9,21 +9,22 @@ player.locY = Math.floor(500 * Math.random() + 10);
 
 const init = () => {
   draw();
+  console.log(orbs);
 };
 
 const draw = () => {
   //clear the screen from last fram
-  context.clearRect(0, 0, canvas.width, canvas.height);
   // reset the translation back to default
-  context.setTransforn(1, 0, 0, 1, 0, 0);
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  context.clearRect(0, 0, canvas.width, canvas.height);
   const camX = -player.locX + canvas.width / 2;
   const camY = -player.locY + canvas.height / 2;
   context.translate(camX, camY);
   context.beginPath();
   context.fillStyle = `rgb(${fColor1},${fColor2},${fColor3})`;
-  // arg1,2 = x,y of the center of the arc    
+  // arg1,2 = x,y of the center of the arc
   // arg 3 is radius of the circle            |
-  // arg 4 is the radian, where to start      |  
+  // arg 4 is the radian, where to start      |
   // arg 5 is where to stop in radians        V
   context.arc(player.locX, player.locY, 10, 0, Math.PI * 2);
   context.arc(200, 200, 10, 0, Math.PI * 2);
@@ -31,6 +32,13 @@ const draw = () => {
   context.lineWidth = 3;
   context.strokeStyle = `rgb(${sColor1},${sColor2},${sColor3})`;
   context.stroke();
+
+  orbs.forEach((orb) => {
+    context.beginPath();
+    context.fillStyle = orb.color;
+    context.arc(orb.locX, orb.locY, orb.radius, 0, Math.PI * 2);
+    context.fill();
+  });
   requestAnimationFrame(draw);
 };
 
