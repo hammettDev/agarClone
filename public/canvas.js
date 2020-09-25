@@ -23,7 +23,7 @@ const draw = () => {
     // arg 3 is radius of the circle            |
     // arg 4 is the radian, where to start      |
     // arg 5 is where to stop in radians        V
-    context.arc(p.locX, p.locY, 10, 0, Math.PI * 2);
+    context.arc(p.locX, p.locY, p.radius, 0, Math.PI * 2);
     // context.arc(200, 200, 10, 0, Math.PI * 2);
     context.fill();
     context.lineWidth = 3;
@@ -41,7 +41,6 @@ const draw = () => {
 };
 
 canvas.addEventListener("mousemove", (e) => {
-  console.log(e);
   const mousePosition = {
     x: e.clientX,
     y: e.clientY,

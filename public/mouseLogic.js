@@ -1,5 +1,4 @@
 canvas.addEventListener('mousemove',(e)=>{
-    console.log(e)
     const mousePosition = {
         x: e.clientX,
         y: e.clientY
